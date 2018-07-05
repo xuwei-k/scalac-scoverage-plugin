@@ -6,7 +6,7 @@ import sbtcrossproject.{CrossProject, CrossType}
 
 val Org = "org.scoverage"
 val MockitoVersion = "2.19.0"
-val ScalatestVersion = "3.0.5-M1"
+val ScalatestVersion = "3.0.6-SNAP1"
 
 val appSettings = Seq(
     organization := Org,
@@ -90,11 +90,9 @@ lazy val plugin = Project("scalac-scoverage-plugin", file("scalac-scoverage-plug
   )).settings(libraryDependencies ++= {
     CrossVersion.partialVersion(scalaVersion.value) match {
       case Some((2, scalaMajor)) if scalaMajor > 10 => Seq(
-        "org.scala-lang.modules" %% "scala-xml" % "1.0.6",
-        "com.typesafe.scala-logging" %% "scala-logging" % "3.8.0" % "test"
+        "org.scala-lang.modules" %% "scala-xml" % "1.1.0"
       )
       case _ => Seq(
-        "com.typesafe.scala-logging" %% "scala-logging-slf4j" % "2.1.2" % "test"
       )
     }
   })
